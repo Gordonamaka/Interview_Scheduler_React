@@ -5,7 +5,7 @@ import classNames from "classnames";
 export default function DayListItem(props) {
 
   //conditional for formatting spots according to test file
-  const formatSpots = function(spots) {
+  const formatSpots = function (spots) {
     if (props.spots === 0) {
       return "no spots remaining";
     }
@@ -20,12 +20,12 @@ export default function DayListItem(props) {
     "day-list__item--selected": props.selected,
     "day-list__item--full": props.spots === 0
   })
-  
+  console.log(props)
   return (
-    <li
-    //Gives individual id's to the test days data
-    className={dayClass}
-    onClick={props.setDay}
+    <li 
+    className={dayClass} 
+    onClick={() => (props.setDay(props.name))}
+    selected={props.selected}
     >
       <h2 className="text--regular">{props.name}</h2>
       <h3 className="text--light">{formatSpots(props.spots)}</h3>
