@@ -45,18 +45,30 @@ const appointments = [
 ];
 
 export default function Application(props) {
+  
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    // you may put the line below, but will have to remove/comment hardcoded appointments variable
+    // appointments: {}
+  });
+  
+  const setDay = day => setState({ ...state, day})
+  const setDays = (days) => {
+    setState(prev => ({ ...prev, days }));
+  }
 
-  const [day, setDay] = useState("Monday");
-  const [days, setDays] = useState([]);
+  // Check to ensure (Daylist) is operational.
+  console.log("state", state)
+  console.log("setState", setState)
+  console.log("setDay", setDay)
+  console.log("setDays", setDays)
+
   // When we call the setDay action, it changes the day state.
 
   useEffect(() => {
-    const testURL = '/api/days'
-    axios.get(testURL).then(response => {
-      console.log('Response', response.data);
-      setDays(response.data)
-    }).catch(error => console.log(error))
-  }, [])
+    axios.get("/api/days").then(response => setDays(response.data))
+  }, []);
 
   return (
     <main className="layout">
@@ -69,9 +81,9 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <DayList
-            day={day}
-            days={days}
-            onChange={setDay}
+            day={state.day}
+            days={state.days}
+            setDay={setDay}
           />
         </nav>
         <img
