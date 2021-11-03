@@ -18,3 +18,17 @@ export function getAppointmentsForDay(state, day) {
 
   return answer;
 }
+
+
+export function getInterview(state, day) {
+
+  if (!day || !day.interviewer) {
+    return null
+  } else {
+    return {
+    ...day,
+    interviewer: state.interviewers[day.interviewer],
+  }
+  }
+
+}
