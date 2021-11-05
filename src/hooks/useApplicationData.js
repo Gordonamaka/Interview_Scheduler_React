@@ -11,6 +11,7 @@ export default function useApplicationData() {
 
   const setDay = (day) => setState({ ...state, day });
 
+  //May be converted into async function
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -22,11 +23,11 @@ export default function useApplicationData() {
     };
     //ensure our saved data is not lost.
     return axios.put(`/api/appointments/${id}`, { interview }).then(() => {
-      const days = spotsLeftForDay(state, appointments);
+      const days = spotsRemaining(state, appointments);
       setState((prev) => ({ ...prev, days, appointments }));
     });
   }
-
+  //May be converted into async function
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],
@@ -37,20 +38,20 @@ export default function useApplicationData() {
       [id]: appointment,
     };
     return axios.delete(`/api/appointments/${id}`).then(() => {
-      const days = spotsLeftForDay(state, appointments);
+      const days = spotsRemaining(state, appointments);
       setState((prev) => ({ ...prev, days, appointments }));
     });
   }
-  function spotsLeftForDay(state, appointments) {
-    let count = 0;
+  function spotsRemaining(state, appointments) {
+    let total = 0;
     const filteredDay = state.days.find((d) => d.name === state.day);
 
-    for (const elem of filteredDay.appointments) {
-      if (appointments[elem].interview === null) count++;
+    for (const item of filteredDay.appointments) {
+      if (appointments[item].interview === null) total++;
     }
     const updatedDay = {
       ...filteredDay,
-      spots: count,
+      spots: total,
     };
     const days = state.days.map((day) =>
       day.id === filteredDay.id ? updatedDay : day
