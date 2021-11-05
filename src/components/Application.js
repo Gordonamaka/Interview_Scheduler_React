@@ -2,36 +2,34 @@ import React from "react";
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "components/Appointment";
-import { getAppointmentsForDay, getInterviewersForDay, getInterview } from "helpers/selectors";
+import {
+  getAppointmentsForDay,
+  getInterviewersForDay,
+  getInterview,
+} from "helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
 
 export default function Application(props) {
-  const {
-    state,
-    setDay,
-    bookInterview,
-    cancelInterview
-  } = useApplicationData();
-  
+  const { state, setDay, bookInterview, cancelInterview } =
+    useApplicationData();
+
   const appointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
 
-  const schedule = appointments.map(
-    appointment => {
-      const interview = getInterview(state, appointment.interview);
+  const schedule = appointments.map((appointment) => {
+    const interview = getInterview(state, appointment.interview);
 
-      return (
-        <Appointment
-          key={appointment.id}
-          {...appointment}
-          interview={interview}
-          bookInterview={bookInterview}
-          cancelInterview={cancelInterview}
-          interviewers={interviewers}
-        />
-      );
-    }
-  );
+    return (
+      <Appointment
+        key={appointment.id}
+        {...appointment}
+        interview={interview}
+        bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
+        interviewers={interviewers}
+      />
+    );
+  });
 
   return (
     <main className="layout">

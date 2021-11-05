@@ -20,6 +20,7 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment,
     };
+    //ensure our saved data is not lost.
     return axios.put(`/api/appointments/${id}`, { interview }).then(() => {
       const days = spotsLeftForDay(state, appointments);
       setState((prev) => ({ ...prev, days, appointments }));
