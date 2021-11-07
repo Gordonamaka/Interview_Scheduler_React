@@ -1,5 +1,7 @@
 # Interview Scheduler
 
+This is an interview scheduler project that allows you to add/remove/edit interviews within your weekly business schedule (12pm - 5pm, Monday-Friday). Enjoy!
+
 ## Setup
 
 Install dependencies with `npm install`.
