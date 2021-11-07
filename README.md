@@ -9,6 +9,11 @@ Install dependencies with `npm install`.
 ```sh
 npm start
 ```
+![Scheduler with Interviews](https://github.com/Gordonamaka/Interview_Scheduler_React/blob/master/docs/Page%20with%20Interviews%20Scheduled.png?raw=true)
+
+![Creating/Editing an Interview](https://github.com/Gordonamaka/Interview_Scheduler_React/blob/master/docs/Creating%20New%20Interview.png?raw=true)
+
+![Deleting an Interview Appointment on a different day](https://github.com/Gordonamaka/Interview_Scheduler_React/blob/master/docs/Deleting%20an%20Interview.png?raw=true)
 
 ## Running Jest Test Framework
 
