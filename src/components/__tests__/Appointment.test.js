@@ -6,15 +6,12 @@ import React from "react";
 */
 import { render, cleanup } from "@testing-library/react";
 
+import Appointment from "components/Appointment/index";
 
-import Appointment from "components/Appointment/index"
-
-afterEach(cleanup)
+afterEach(cleanup);
 
 describe("Appointment", () => {
-
-it("render without crashing", () => {
-  render(<Appointment />);
-});
-
+  it("render without crashing", () => {
+    render(<Appointment />);
+  });
 });
