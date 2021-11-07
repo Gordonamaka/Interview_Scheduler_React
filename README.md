@@ -1,6 +1,6 @@
 # Interview Scheduler
 
-This is an interview scheduler project that allows you to add/remove/edit interviews within your weekly business schedule (12pm - 5pm, Monday-Friday). Enjoy!
+This is an interview scheduler that allows you to add/remove/edit interviews within your weekly business schedule (12pm - 5pm, Monday-Friday). Enjoy!
 
 ## Setup
 
